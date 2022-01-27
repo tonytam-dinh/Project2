@@ -17,9 +17,9 @@
 - Zeppelin
 
 # Features
-- Read data from https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset
-- Produce analysis with Spark/SparkSQL
-- Display Zeppelin visualization
+- Cleaned data from https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset
+- Produced analysis with Spark/SparkSQL
+- Displayed Zeppelin visualization
 
 # Getting started
 (Assumes you have both HDFS,Zeppelin,Spark Submit, and SBT Configured)
