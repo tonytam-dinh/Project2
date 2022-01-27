@@ -1,0 +1,14 @@
+TABLE CREATION:
+- spark.sql("CREATE TABLE IF NOT EXISTS employee ( eid int, name String,
+salary String, destination String)
+COMMENT ‘Employee details’
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘\t’
+LINES TERMINATED BY ‘\n’
+STORED AS TEXTFILE";
+https://www.tutorialspoint.com/hive/hive_create_table.htm 
+
+
+LOADING DATA:
+- with overwrite: 
+load data local inpath 'emp.dat' overwrite into table emp;
