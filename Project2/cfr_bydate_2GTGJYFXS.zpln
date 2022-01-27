@@ -1,0 +1,1620 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\n//import org.apache.spark.sql._\n\n\nval SPARK_HOME \u003d System.getenv(\"SPARK_HOME\")\n\n//spark.sql(\"drop table if exists CFOT\")\n//spark.sql(\"create table CFOT (CountryorRegion STRING, Date STRING, CFR INT)\")\n//spark.sql(\"LOAD DATA LOCAL INPATH \u0027CFOT.csv\u0027 OVERWRITE INTO TABLE TotalConfirmed\")\n//spark.sql(\"select * from CFT\").printSchema\nval df1 \u003d spark.read.csv(s\"/user/benjaminruiz/CFOT.csv\") //case fatality over time\ndf1.printSchema\ndf1.show()\ndf1.createOrReplaceTempView(\"test_table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 08:31:10.157",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n |-- _c2: string (nullable \u003d true)\n\n+---------------+-------+--------------------+\n|            _c0|    _c1|                 _c2|\n+---------------+-------+--------------------+\n|     Azerbaijan| 2-2020|                 0.0|\n|(\u0027St. Martin\u0027-)| 3-2020|                 0.0|\n|    Afghanistan| 1-2021|0.043618123330243716|\n|    Afghanistan|10-2020| 0.03712733856366928|\n|    Afghanistan|11-2020| 0.03879068159225483|\n|    Afghanistan|12-2020| 0.04252222179094049|\n|    Afghanistan| 2-2020|                 0.0|\n|    Afghanistan| 2-2021| 0.04384894281509136|\n|    Afghanistan| 3-2020|0.022857142857142857|\n|    Afghanistan| 3-2021|0.044000425124880435|\n|    Afghanistan| 4-2020| 0.03008932769158439|\n|    Afghanistan| 4-2021|0.043936731107205626|\n|    Afghanistan| 5-2020|   0.016964755391899|\n|    Afghanistan| 5-2021| 0.04134871846072656|\n|    Afghanistan| 6-2020|0.023867711937029867|\n|    Afghanistan| 7-2020| 0.03501977362607391|\n|    Afghanistan| 8-2020| 0.03676721088078828|\n|    Afghanistan| 9-2020|  0.0371804013446063|\n|        Albania| 1-2021|0.017663547813175983|\n|        Albania|10-2020| 0.02438323353293413|\n+---------------+-------+--------------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /opt/spark\n\u001b[1m\u001b[34mdf1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d24"
+            },
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d25"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642021939900_189779108",
+      "id": "paragraph_1642021939900_189779108",
+      "dateCreated": "2022-01-12 13:12:19.900",
+      "dateStarted": "2022-01-13 12:46:05.478",
+      "dateFinished": "2022-01-13 12:46:05.945",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect _c1, CAST(IFNULL(_c2,0) as DOUBLE) as cfr from test_table where _c0\u003d${_c0\u003d\u0027Mexico\u0027} order by 1",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 09:08:08.662",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "_c10",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "cfr1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0.0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c1": "string",
+                      "cfr": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "_c1",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "cfr",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "_c0": "\"UK\""
+        },
+        "forms": {
+          "_c0": {
+            "type": "TextBox",
+            "name": "_c0",
+            "displayName": "_c0",
+            "defaultValue": "\u0027Mexico\u0027",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "_c1\tcfr\n1-2020\t0.0\n1-2021\t0.0279679844273803\n10-2020\t0.04791459897209369\n11-2020\t0.03651540314112222\n12-2020\t0.02996229829024522\n2-2020\t0.0\n2-2021\t0.029609780578796135\n3-2020\t0.07113320079522863\n3-2021\t0.02933363713526009\n4-2020\t0.15632426877193392\n4-2021\t0.029066190673879118\n5-2020\t0.1400812339406468\n5-2021\t0.028737064996626014\n6-2020\t0.14175079185091488\n7-2020\t0.15883802439658998\n8-2020\t0.14500685880512032\n9-2020\t0.09638153998279866\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d61"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642109541557_885142538",
+      "id": "paragraph_1642109541557_885142538",
+      "dateCreated": "2022-01-13 13:32:21.557",
+      "dateStarted": "2022-01-13 14:00:27.864",
+      "dateFinished": "2022-01-13 14:00:27.971",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect _c0 as Country, CAST(IFNULL(_c2,0) as DOUBLE) as cfr from test_table where _c1\u003d${_c1\u003d\u00275-2021\u0027} and CAST(IFNULL(_c2,0) as DOUBLE)\u003e0.01 order by 2 desc\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:20:27.533",
+      "progress": 64,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 641.516,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Country": "string",
+                      "cfr": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "rotate",
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Country",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "cfr",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "cfr": "2",
+          "_c1": "\u00278-2020\u0027"
+        },
+        "forms": {
+          "_c1": {
+            "type": "TextBox",
+            "name": "_c1",
+            "displayName": "_c1",
+            "defaultValue": "\u00275-2021\u0027",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Country\tcfr\nYemen\t0.28907048008171604\nMS Zaandam\t0.2222222222222222\nItaly\t0.16852360729452912\nUK\t0.14500685880512032\nBelgium\t0.11727439110235112\nMexico\t0.10697816150330117\nFrance\t0.10021718487657262\nHungary\t0.10017918227724384\nSweden\t0.09724196758601081\nCanada\t0.09249183895538629\nNetherlands\t0.08080438756855576\nChad\t0.07601184600197433\nFiji\t0.07142857142857142\nSpain\t0.06860388554384128\nMainland China\t0.0662175846431559\nLiberia\t0.06288343558282208\nSudan\t0.06240048525286224\nIreland\t0.06167783138384645\nSan Marino\t0.05874125874125874\nNiger\t0.058673469387755105\nEcuador\t0.057626552515228496\nIran\t0.0574901655597369\nEgypt\t0.054791336075763857\nSwitzerland\t0.0475614671503426\nSlovenia\t0.046132500867152273\nUS\t0.04612131457711749\nMali\t0.045389048991354465\nAndorra\t0.045068027210884355\nGermany\t0.04496736926406189\nBolivia\t0.04311394706598741\nIndonesia\t0.04243232110574613\nNorth Macedonia\t0.04204727703786347\nFinland\t0.04155330200346277\nPeru\t0.04152061058764178\nRomania\t0.04136394790952708\nTanzania\t0.0412573673870334\nAngola\t0.04069329314242653\nSyria\t0.04050632911392405\nBarbados\t0.040229885057471264\nBurkina Faso\t0.0402046783625731\nKosovo\t0.03902185223725286\nBulgaria\t0.03866961760727899\nBrazil\t0.03731497298412864\nGuatemala\t0.03726003726003726\nAfghanistan\t0.03676721088078828\nDenmark\t0.036738298498675305\nSierra Leone\t0.03461918892185954\nKyrgyzstan\t0.034124561483438884\nAlgeria\t0.03393716006652582\nVietnam\t0.032567049808429116\nGambia\t0.03239959500506244\nAntigua and Barbuda\t0.031914893617021274\nMalawi\t0.031440891124685594\nPortugal\t0.03140729504240502\nChile\t0.031192459447610697\nZimbabwe\t0.031091272895182393\nIndia\t0.03101795364530037\nHonduras\t0.030697872619398825\nBosnia and Herzegovina\t0.030504908835904627\nNicaragua\t0.030485091232754783\nPoland\t0.03026479843258327\nIraq\t0.029974375782134556\nGuyana\t0.02986217457886677\nAlbania\t0.02985388415851992\nAustralia\t0.029783676455219982\nSomalia\t0.029607250755287008\nEstonia\t0.029052631578947368\nLesotho\t0.02857142857142857\nMauritius\t0.028089887640449437\nEl Salvador\t0.0278673869952194\nUruguay\t0.027586206896551724\nUkraine\t0.02715368711233632\nMoldova\t0.026950162513542795\nAustria\t0.02671477512938261\nMonaco\t0.025974025974025976\nGreece\t0.02578268876611418\nColombia\t0.025731187884524373\nCongo (Kinshasa)\t0.025552144201247896\nHaiti\t0.02448532098915824\nNorway\t0.02448525319977741\nLatvia\t0.024355300859598854\nZambia\t0.02380755559229561\nLithuania\t0.02379310344827586\nTurkey\t0.0235809767781056\nCuba\t0.023313492063492064\nSerbia\t0.022702668279946506\nSouth Africa\t0.022564712674290836\nMauritania\t0.022559591373439273\nBahamas\t0.02255299954894001\nPanama\t0.021531049020240476\nCameroon\t0.021471110646745378\nSenegal\t0.020865476452869004\nBrunei\t0.020833333333333332\nArgentina\t0.020730846110572493\nMontenegro\t0.020682523267838676\nTunisia\t0.020247173284249277\nArmenia\t0.020077202439414358\nTogo\t0.02\nEswatini\t0.019882018789600175\nCongo (Brazzaville)\t0.019602915305353102\nNigeria\t0.018756480521404235\nBenin\t0.018648018648018648\nSouth Sudan\t0.018599129402453504\nPakistan\t0.01856232798342456\nHong Kong\t0.018503118503118504\nParaguay\t0.018457705809081643\nRussia\t0.018371453177754574\nDiamond Princess\t0.018258426966292134\nMorocco\t0.01822974916120786\nCroatia\t0.018112766579024248\nDominican Republic\t0.01805416248746239\nSuriname\t0.01760039662865642\nJapan\t0.01742929850674605\nCzech Republic\t0.017223170038183442\nThailand\t0.016998827667057445\nLibya\t0.016969783760561363\nKenya\t0.016870851729481592\nEquatorial Guinea\t0.016798218984011334\nSao Tome and Principe\t0.016741071428571428\nComoros\t0.016548463356973995\nPhilippines\t0.016112743921492263\nSouth Korea\t0.016053909424239423\nLuxembourg\t0.01564076690211907\nEthiopia\t0.015518597379678119\nGuinea-Bissau\t0.015419501133786848\nAzerbaijan\t0.014656237134623301\nTaiwan\t0.014344262295081968\nBangladesh\t0.013677491086148066\nKazakhstan\t0.013629441430134764\nMalaysia\t0.013597430406852249\nCyprus\t0.013440860215053764\nCentral African Republic\t0.013160687752069624\nMadagascar\t0.012917984256206688\nBelize\t0.012909632571996028\nGeorgia\t0.012777404169468728\nNew Zealand\t0.012557077625570776\nTrinidad and Tobago\t0.012507106310403639\nSaudi Arabia\t0.01234118287878596\nDjibouti\t0.011137924633376647\nPapua New Guinea\t0.010893246187363835\nUganda\t0.010767160161507403\nCosta Rica\t0.010560224768086808\nCabo Verde\t0.010298661174047374\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d51"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642022333551_831508668",
+      "id": "paragraph_1642022333551_831508668",
+      "dateCreated": "2022-01-12 13:18:53.551",
+      "dateStarted": "2022-01-13 13:30:47.343",
+      "dateFinished": "2022-01-13 13:30:47.460",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nwith result as (select _c0 as Country, CAST(IFNULL(_c2,0) as DOUBLE) as cfr from test_table where _c1\u003d\u00275-2021\u0027 and CAST(IFNULL(_c2,0) as DOUBLE)\u003e0.01 order by cfr desc) select * from result where Country\u003d${Country\u003d\"input\"}",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-13 13:04:02.318",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Country": "string",
+                      "cfr": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "Country": "\"Australia\""
+        },
+        "forms": {
+          "Country": {
+            "type": "TextBox",
+            "name": "Country",
+            "displayName": "Country",
+            "defaultValue": "\"input\"",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Country\tcfr\nAustralia\t0.03981935609187588\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d37"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642107303727_165790654",
+      "id": "paragraph_1642107303727_165790654",
+      "dateCreated": "2022-01-13 12:55:03.727",
+      "dateStarted": "2022-01-13 13:04:02.321",
+      "dateFinished": "2022-01-13 13:04:02.406",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\nval SPARK_HOME \u003d System.getenv(\"SPARK_HOME\")\nval df2 \u003d spark.read.csv(s\"/user/benjaminruiz/CTD.csv\") //this paragraph represents the country total deaths csv\ndf2.printSchema\ndf2.show()\ndf2.createOrReplaceTempView(\"CTD_table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 11:13:50.709",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n\n+------------+------+\n|         _c0|   _c1|\n+------------+------+\n|          US|594413|\n|      Brazil|479040|\n|       India|333722|\n|      Mexico|229121|\n|          UK|169443|\n|       Italy|157108|\n|      Russia|123480|\n|      France|110798|\n|       Spain|107012|\n|     Germany| 96349|\n|    Colombia| 89055|\n|        Iran| 79741|\n|   Argentina| 77108|\n|        Peru| 73734|\n|      Poland| 73682|\n|South Africa| 56363|\n|     Ukraine| 53122|\n|   Indonesia| 50262|\n|      Turkey| 47271|\n|     Belgium| 38679|\n+------------+------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /opt/spark\n\u001b[1m\u001b[34mdf2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d4"
+            },
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642092480000_1085197297",
+      "id": "paragraph_1642092480000_1085197297",
+      "dateCreated": "2022-01-13 08:48:00.000",
+      "dateStarted": "2022-01-14 11:13:50.716",
+      "dateFinished": "2022-01-14 11:13:51.907",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect * from CTD_table limit 10\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 11:24:00.222",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 736.844,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c0": "string",
+                      "_c1": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "rotate",
+                  "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "_c0",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "_c1",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "_c0\t_c1\nUS\t594413\nBrazil\t479040\nIndia\t333722\nMexico\t229121\nUK\t169443\nItaly\t157108\nRussia\t123480\nFrance\t110798\nSpain\t107012\nGermany\t96349\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d6"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642022406372_1105548153",
+      "id": "paragraph_1642022406372_1105548153",
+      "dateCreated": "2022-01-12 13:20:06.372",
+      "dateStarted": "2022-01-14 11:13:55.373",
+      "dateFinished": "2022-01-14 11:13:55.550",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval SPARK_HOME \u003d System.getenv(\"SPARK_HOME\")\nval df3 \u003d spark.read.csv(s\"/user/benjaminruiz/CTCC.csv\") //this paragraph represents the country total confirmed cases csv\ndf3.printSchema\ndf3.show()\ndf3.createOrReplaceTempView(\"CTCC_table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 12:09:18.265",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n\n+--------------+--------+\n|           _c0|     _c1|\n+--------------+--------+\n|            US|33251939|\n|         India|27894800|\n|        Brazil|16471600|\n|        France| 5719877|\n|        Turkey| 5235978|\n|        Russia| 4995613|\n|            UK| 4496823|\n|         Italy| 4213055|\n|     Argentina| 3732263|\n|       Germany| 3684672|\n|         Spain| 3668658|\n|      Colombia| 3363061|\n|          Iran| 2893218|\n|        Poland| 2871371|\n|        Mexico| 2411503|\n|       Ukraine| 2257904|\n|          Peru| 1947555|\n|     Indonesia| 1809926|\n|   Netherlands| 1671967|\n|Czech Republic| 1660935|\n+--------------+--------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /opt/spark\n\u001b[1m\u001b[34mdf3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d20"
+            },
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d21"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642092799450_1755135456",
+      "id": "paragraph_1642092799450_1755135456",
+      "dateCreated": "2022-01-13 08:53:19.450",
+      "dateStarted": "2022-01-14 12:09:18.271",
+      "dateFinished": "2022-01-14 12:09:18.862",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect _c0 as CountryRegion, CAST(IFNULL(_c1,0) AS INT) as Cases from CTCC_table limit 10",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 12:20:31.526",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "CountryRegion": "string",
+                      "Cases": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "CountryRegion",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Cases",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "CountryRegion\tCases\nUS\t33251939\nIndia\t27894800\nBrazil\t16471600\nFrance\t5719877\nTurkey\t5235978\nRussia\t4995613\nUK\t4496823\nItaly\t4213055\nArgentina\t3732263\nGermany\t3684672\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d23"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642180062000_290436461",
+      "id": "paragraph_1642180062000_290436461",
+      "dateCreated": "2022-01-14 09:07:42.001",
+      "dateStarted": "2022-01-14 12:20:31.540",
+      "dateFinished": "2022-01-14 12:20:31.692",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval SPARK_HOME \u003d System.getenv(\"SPARK_HOME\")\nval df4 \u003d spark.read.csv(s\"/user/benjaminruiz/TDoCC.csv\") //this paragraph represents the country total confirmed cases csv\ndf4.printSchema\ndf4.show()\ndf4.createOrReplaceTempView(\"TDoCC_table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 11:27:15.305",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n\n+----------+-------+\n|       _c0|    _c1|\n+----------+-------+\n|12-10-2020|1498213|\n| 4-28-2021| 905992|\n| 4-23-2021| 903747|\n| 4-22-2021| 899755|\n| 4-29-2021| 897602|\n| 4-21-2021| 889975|\n|  1-7-2021| 880837|\n| 4-30-2021| 879014|\n|  5-6-2021| 869972|\n| 4-16-2021| 854855|\n| 4-20-2021| 854425|\n| 4-27-2021| 844470|\n|  5-5-2021| 841224|\n|  4-8-2021| 839850|\n|  5-7-2021| 831558|\n| 4-24-2021| 820940|\n| 4-14-2021| 817025|\n| 4-15-2021| 816761|\n|  5-4-2021| 807436|\n|  1-8-2021| 803222|\n+----------+-------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /opt/spark\n\u001b[1m\u001b[34mdf4\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642181168130_1672495640",
+      "id": "paragraph_1642181168130_1672495640",
+      "dateCreated": "2022-01-14 09:26:08.131",
+      "dateStarted": "2022-01-14 11:27:15.313",
+      "dateFinished": "2022-01-14 11:27:16.114",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nselect * from TDoCC_table",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 11:27:32.687",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_c0": "string",
+                      "_c1": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "_c0",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "_c1",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "_c0\t_c1\n12-10-2020\t1498213\n4-28-2021\t905992\n4-23-2021\t903747\n4-22-2021\t899755\n4-29-2021\t897602\n4-21-2021\t889975\n1-7-2021\t880837\n4-30-2021\t879014\n5-6-2021\t869972\n4-16-2021\t854855\n4-20-2021\t854425\n4-27-2021\t844470\n5-5-2021\t841224\n4-8-2021\t839850\n5-7-2021\t831558\n4-24-2021\t820940\n4-14-2021\t817025\n4-15-2021\t816761\n5-4-2021\t807436\n1-8-2021\t803222\n5-1-2021\t796679\n4-17-2021\t788042\n5-8-2021\t786546\n1-6-2021\t783372\n4-13-2021\t779567\n1-15-2021\t767187\n12-30-2020\t761230\n1-9-2021\t760994\n5-12-2021\t760099\n1-14-2021\t755228\n1-13-2021\t748388\n4-9-2021\t748045\n1-5-2021\t740122\n12-17-2020\t739582\n5-11-2021\t738473\n12-16-2020\t733726\n5-13-2021\t725275\n12-31-2020\t725009\n4-25-2021\t722356\n12-18-2020\t720462\n5-14-2021\t718060\n4-1-2021\t711787\n1-12-2021\t705508\n12-11-2020\t704497\n12-23-2020\t695122\n12-3-2020\t694500\n4-19-2021\t693422\n1-20-2021\t692937\n4-11-2021\t690741\n11-27-2020\t687148\n4-18-2021\t685495\n4-7-2021\t684346\n12-4-2020\t683276\n3-31-2021\t683205\n4-26-2021\t682784\n5-3-2021\t681590\n5-2-2021\t674348\n5-19-2021\t671092\n12-9-2020\t669911\n11-20-2020\t668744\n12-24-2020\t666640\n4-10-2021\t664507\n12-29-2020\t664428\n1-22-2021\t659061\n1-21-2021\t656323\n11-19-2020\t653585\n11-13-2020\t652073\n12-2-2020\t651398\n3-25-2021\t651350\n12-22-2020\t650261\n11-12-2020\t649543\n11-11-2020\t648606\n11-6-2020\t645135\n12-8-2020\t643488\n12-5-2020\t642031\n5-9-2021\t641539\n3-26-2021\t641351\n1-16-2021\t639144\n11-25-2020\t636224\n12-15-2020\t636206\n12-12-2020\t634850\n4-2-2021\t633739\n3-24-2021\t633581\n5-15-2021\t627518\n11-18-2020\t627103\n1-2-2021\t626359\n5-21-2021\t625876\n5-18-2021\t622185\n5-10-2021\t621929\n1-11-2021\t619930\n4-12-2021\t616625\n1-28-2021\t614251\n12-1-2020\t612097\n11-17-2020\t611969\n12-19-2020\t611253\n1-19-2021\t608426\n4-6-2021\t604087\n11-4-2020\t598714\n1-27-2021\t598361\n11-7-2020\t597319\n11-5-2020\t596660\n11-14-2020\t594970\n1-29-2021\t590443\n11-24-2020\t590261\n1-10-2021\t589134\n11-21-2020\t587564\n11-28-2020\t586031\n3-27-2021\t584592\n11-26-2020\t582475\n5-22-2021\t577795\n3-30-2021\t568273\n5-26-2021\t568216\n1-23-2021\t568124\n10-30-2020\t566456\n11-10-2020\t564209\n3-19-2021\t561679\n1-26-2021\t556238\n5-27-2021\t554368\n1-4-2021\t554118\n3-18-2021\t553723\n4-4-2021\t552803\n12-21-2020\t549297\n5-16-2021\t548206\n5-17-2021\t539694\n3-17-2021\t539285\n12-6-2020\t538754\n10-29-2020\t538455\n2-5-2021\t535428\n11-16-2020\t533708\n12-20-2020\t533473\n1-1-2021\t533018\n1-3-2021\t532796\n5-25-2021\t531845\n12-13-2020\t530838\n4-3-2021\t529443\n1-17-2021\t529212\n12-14-2020\t525387\n11-23-2020\t525319\n2-3-2021\t521981\n12-7-2020\t520019\n10-28-2020\t518602\n11-3-2020\t518184\n1-30-2021\t515330\n1-18-2021\t515066\n3-23-2021\t514245\n12-26-2020\t512602\n11-30-2020\t508641\n10-23-2020\t506368\n11-2-2020\t504818\n5-28-2021\t499934\n3-20-2021\t498820\n1-25-2021\t497340\n12-28-2020\t496323\n4-5-2021\t489584\n3-12-2021\t489328\n11-29-2020\t488583\n11-22-2020\t487981\n10-31-2020\t486519\n11-8-2020\t483998\n5-29-2021\t480835\n3-11-2021\t476896\n5-23-2021\t476075\n11-15-2020\t473941\n3-16-2021\t473013\n10-22-2020\t472835\n10-27-2020\t471344\n11-1-2020\t470049\n3-28-2021\t469958\n11-9-2020\t467886\n3-10-2021\t467079\n2-4-2021\t466907\n12-25-2020\t465550\n3-29-2021\t458405\n2-2-2021\t457957\n10-24-2020\t455184\n5-24-2021\t454300\n3-13-2021\t454116\n3-4-2021\t453049\n2-25-2021\t447478\n3-5-2021\t447054\n2-1-2021\t446774\n1-24-2021\t445654\n2-24-2021\t444936\n10-21-2020\t444287\n2-26-2021\t443039\n2-11-2021\t441465\n10-26-2020\t441186\n3-3-2021\t441142\n12-27-2020\t438453\n2-10-2021\t435741\n2-12-2021\t428689\n2-9-2021\t428033\n3-21-2021\t423315\n3-22-2021\t416821\n3-9-2021\t414665\n2-19-2021\t412519\n10-16-2020\t411873\n3-6-2021\t410533\n10-15-2020\t407218\n2-18-2021\t403516\n10-25-2020\t399641\n2-7-2021\t398078\n2-17-2021\t395555\n2-27-2021\t389230\n10-20-2020\t389223\n2-23-2021\t388853\n10-19-2020\t387438\n10-14-2020\t382234\n1-31-2021\t381639\n2-13-2021\t373301\n10-17-2020\t372778\n2-6-2021\t372125\n2-20-2021\t370455\n9-15-2020\t369202\n3-7-2021\t368312\n10-8-2020\t361488\n10-9-2020\t361160\n3-14-2021\t360385\n10-10-2020\t357357\n9-24-2020\t353465\n2-16-2021\t351020\n10-7-2020\t349906\n3-15-2021\t348901\n7-29-2020\t339893\n9-25-2020\t335657\n10-6-2020\t331280\n9-18-2020\t326109\n9-30-2020\t325657\n9-11-2020\t321094\n10-13-2020\t319422\n10-3-2020\t318196\n10-18-2020\t316794\n2-8-2021\t315893\n9-17-2020\t315084\n2-21-2021\t314446\n10-1-2020\t312725\n3-2-2021\t310288\n9-4-2020\t305927\n3-1-2021\t305864\n10-2-2020\t305740\n9-16-2020\t303962\n2-28-2021\t303509\n8-14-2020\t302412\n9-10-2020\t299121\n3-8-2021\t298723\n10-5-2020\t296720\n2-14-2021\t293850\n9-9-2020\t293457\n9-19-2020\t292859\n10-12-2020\t292096\n7-31-2020\t290765\n9-26-2020\t289153\n2-22-2021\t288438\n9-12-2020\t287195\n10-11-2020\t287006\n8-12-2020\t286294\n8-6-2020\t285396\n9-22-2020\t284899\n8-28-2020\t284216\n9-29-2020\t283357\n2-15-2021\t283166\n7-23-2020\t282954\n9-2-2020\t282608\n8-7-2020\t282523\n8-26-2020\t282023\n7-24-2020\t281989\n8-27-2020\t280749\n7-30-2020\t280601\n7-22-2020\t279687\n5-20-2021\t279413\n8-19-2020\t278781\n8-13-2020\t278404\n9-21-2020\t276087\n8-5-2020\t275870\n10-4-2020\t275692\n9-23-2020\t274819\n9-3-2020\t274087\n8-20-2020\t272562\n9-5-2020\t270592\n9-1-2020\t265761\n8-29-2020\t265162\n8-31-2020\t265007\n8-21-2020\t261872\n8-8-2020\t259133\n8-18-2020\t258238\n8-4-2020\t258188\n8-11-2020\t256984\n9-27-2020\t254559\n8-22-2020\t253658\n7-25-2020\t253238\n9-20-2020\t253163\n9-28-2020\t252652\n7-17-2020\t250825\n8-15-2020\t250807\n8-1-2020\t249087\n7-16-2020\t248390\n8-25-2020\t243790\n9-13-2020\t242570\n7-21-2020\t240066\n9-8-2020\t239231\n9-6-2020\t239131\n7-18-2020\t236970\n7-27-2020\t235211\n7-15-2020\t231962\n7-10-2020\t231496\n8-2-2020\t231357\n8-10-2020\t226522\n8-24-2020\t226125\n8-9-2020\t225697\n7-9-2020\t225620\n8-30-2020\t220983\n7-14-2020\t220574\n7-11-2020\t218339\n8-23-2020\t217390\n7-1-2020\t217186\n8-16-2020\t215167\n7-19-2020\t213941\n7-8-2020\t213762\n9-7-2020\t213173\n7-7-2020\t210081\n8-17-2020\t207699\n8-3-2020\t207684\n7-26-2020\t205912\n7-28-2020\t204443\n7-3-2020\t203843\n7-20-2020\t200878\n7-13-2020\t193212\n7-4-2020\t192350\n7-12-2020\t192159\n6-26-2020\t191918\n7-5-2020\t183317\n9-14-2020\t180236\n6-19-2020\t179601\n6-25-2020\t179305\n7-2-2020\t178987\n6-27-2020\t177605\n6-17-2020\t177395\n6-30-2020\t174142\n7-6-2020\t169155\n6-28-2020\t168908\n6-24-2020\t168890\n6-23-2020\t166442\n6-21-2020\t163144\n6-29-2020\t154808\n6-11-2020\t154018\n6-22-2020\t144470\n6-16-2020\t139799\n6-18-2020\t139704\n6-5-2020\t137561\n5-30-2020\t134526\n6-13-2020\t134271\n6-14-2020\t133605\n6-15-2020\t133446\n6-4-2020\t128313\n6-6-2020\t125908\n6-9-2020\t123784\n6-20-2020\t123658\n6-2-2020\t121356\n6-10-2020\t118798\n6-3-2020\t118681\n6-12-2020\t118620\n5-28-2020\t117538\n5-29-2020\t115225\n6-7-2020\t114048\n5-22-2020\t108628\n6-8-2020\t108441\n5-31-2020\t107420\n5-21-2020\t106067\n4-24-2020\t103015\n5-27-2020\t102117\n5-15-2020\t100106\n5-23-2020\t99425\n6-1-2020\t99203\n4-12-2020\t99145\n5-20-2020\t98650\n5-24-2020\t96766\n4-16-2020\t96553\n5-26-2020\t95392\n5-19-2020\t95274\n5-14-2020\t94745\n4-10-2020\t93437\n5-6-2020\t93427\n5-16-2020\t91855\n5-8-2020\t91493\n5-7-2020\t90344\n5-18-2020\t88524\n4-17-2020\t87647\n5-1-2020\t87569\n5-25-2020\t87387\n5-9-2020\t86325\n4-25-2020\t86154\n5-13-2020\t85645\n4-8-2020\t85332\n5-12-2020\t85020\n4-9-2020\t83439\n5-2-2020\t83007\n4-3-2020\t82753\n4-18-2020\t81323\n4-23-2020\t80637\n4-2-2020\t80573\n4-4-2020\t80068\n5-17-2020\t80035\n4-15-2020\t79883\n5-5-2020\t79816\n4-19-2020\t79781\n5-3-2020\t79163\n4-29-2020\t78697\n4-22-2020\t78637\n4-11-2020\t78029\n5-10-2020\t77343\n4-21-2020\t77059\n5-4-2020\t76332\n5-11-2020\t75397\n3-31-2020\t75111\n4-1-2020\t74966\n4-28-2020\t74908\n4-26-2020\t74402\n4-7-2020\t73687\n4-5-2020\t73654\n4-6-2020\t71753\n4-14-2020\t71346\n4-20-2020\t71086\n4-27-2020\t70413\n4-13-2020\t70055\n3-28-2020\t67284\n3-27-2020\t63773\n4-30-2020\t63299\n3-30-2020\t62353\n3-26-2020\t62139\n3-29-2020\t59279\n3-25-2020\t49644\n3-23-2020\t40631\n3-24-2020\t39393\n3-22-2020\t33195\n3-21-2020\t32404\n3-20-2020\t29594\n3-19-2020\t27691\n3-18-2020\t17778\n3-13-2020\t16853\n3-17-2020\t15634\n2-13-2020\t15148\n3-16-2020\t14163\n3-15-2020\t11324\n3-14-2020\t10902\n3-11-2020\t7263\n2-14-2020\t6517\n3-10-2020\t4811\n2-2-2020\t4749\n3-7-2020\t4069\n2-4-2020\t4011\n3-8-2020\t3988\n3-9-2020\t3956\n3-6-2020\t3827\n2-5-2020\t3744\n2-7-2020\t3574\n2-6-2020\t3182\n2-3-2020\t3094\n2-9-2020\t3030\n3-5-2020\t2809\n2-8-2020\t2729\n1-28-2020\t2651\n2-10-2020\t2612\n3-3-2020\t2545\n3-12-2020\t2479\n3-1-2020\t2356\n3-4-2020\t2271\n2-16-2020\t2193\n2-15-2020\t2146\n2-1-2020\t2113\n1-30-2020\t2070\n2-11-2020\t2040\n2-17-2020\t2034\n3-2-2020\t1943\n2-29-2020\t1887\n2-18-2020\t1878\n2-22-2020\t1756\n1-31-2020\t1690\n2-28-2020\t1369\n2-27-2020\t1359\n2-26-2020\t982\n2-25-2020\t845\n1-27-2020\t809\n1-26-2020\t681\n2-21-2020\t644\n1-29-2020\t587\n2-24-2020\t585\n2-20-2020\t558\n1-22-2020\t557\n2-19-2020\t503\n1-25-2020\t496\n2-12-2020\t419\n2-23-2020\t386\n1-24-2020\t288\n1-23-2020\t96\nnull\tnull\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642188415480_1122802314",
+      "id": "paragraph_1642188415480_1122802314",
+      "dateCreated": "2022-01-14 11:26:55.482",
+      "dateStarted": "2022-01-14 11:27:25.014",
+      "dateFinished": "2022-01-14 11:27:25.256",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n\nval SPARK_HOME \u003d System.getenv(\"SPARK_HOME\")\nval df5 \u003d spark.read.csv(s\"/user/benjaminruiz/CFbC.csv\") //this paragraph represents the country total confirmed cases csv\ndf5.printSchema\ndf5.show()\ndf5.createOrReplaceTempView(\"CFbC_table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 11:49:11.685",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n\n+--------------------+--------------------+\n|                 _c0|                 _c1|\n+--------------------+--------------------+\n|             Vanuatu|                0.25|\n|          MS Zaandam|  0.2222222222222222|\n|               Yemen|  0.1959589956915763|\n|               Sudan| 0.07367734988239961|\n|               Syria| 0.07213584288052373|\n|      Mainland China|  0.0661981543156443|\n|               Egypt| 0.05755028600585439|\n|              Mexico| 0.05313666711257586|\n|             Somalia|  0.0524124752610387|\n|             Belgium|0.048353580097440584|\n|             Ecuador| 0.04822939155862043|\n|Bosnia and Herzeg...| 0.04518762356565721|\n|            Bulgaria|0.042219305104239144|\n|         Afghanistan| 0.04134871846072656|\n|            Tanzania|  0.0412573673870334|\n|            Zimbabwe| 0.04094213135386433|\n|               Italy| 0.04025394025597734|\n|           Australia| 0.03981935609187588|\n|             Liberia| 0.03946764570904084|\n|             Bolivia| 0.03936310039976658|\n+--------------------+--------------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /opt/spark\n\u001b[1m\u001b[34mdf5\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d15"
+            },
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d16"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642189624244_2052576589",
+      "id": "paragraph_1642189624244_2052576589",
+      "dateCreated": "2022-01-14 11:47:04.244",
+      "dateStarted": "2022-01-14 11:49:11.695",
+      "dateFinished": "2022-01-14 11:49:12.199",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n\nselect _c0 as Country, CAST(IFNULL(_c1,0) AS DOUBLE) as cfr from CFbC_table where CAST(IFNULL(_c1,0) AS DOUBLE)\u003e0",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-14 11:50:16.129",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Country": "string",
+                      "cfr": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Country",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "cfr",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Country\tcfr\nVanuatu\t0.25\nMS Zaandam\t0.2222222222222222\nYemen\t0.1959589956915763\nSudan\t0.07367734988239961\nSyria\t0.07213584288052373\nMainland China\t0.0661981543156443\nEgypt\t0.05755028600585439\nMexico\t0.05313666711257586\nSomalia\t0.0524124752610387\nBelgium\t0.048353580097440584\nEcuador\t0.04822939155862043\nBosnia and Herzegovina\t0.04518762356565721\nBulgaria\t0.042219305104239144\nAfghanistan\t0.04134871846072656\nTanzania\t0.0412573673870334\nZimbabwe\t0.04094213135386433\nItaly\t0.04025394025597734\nAustralia\t0.03981935609187588\nLiberia\t0.03946764570904084\nBolivia\t0.03936310039976658\nSpain\t0.03792806206410156\nComoros\t0.03761917031692863\nHungary\t0.036950021889676034\nTunisia\t0.03661896357907122\nMali\t0.03624255169996495\nEswatini\t0.03615041153370273\nNiger\t0.0354898336414048\nChad\t0.03510551948051948\nNorth Macedonia\t0.03477062210942633\nBrazil\t0.03414029278381808\nSouth Africa\t0.033972647326514255\nPeru\t0.03383860118905306\nMalawi\t0.03361589326808238\nAntigua and Barbuda\t0.03335980937251787\nGuatemala\t0.03199297186777341\nSlovakia\t0.03166854971240756\nMartinique\t0.03125\nEl Salvador\t0.030595527400813696\nLesotho\t0.030115473441108546\nGreece\t0.03003034503427865\nGambia\t0.02971619365609349\nPakistan\t0.029439088337909536\nUK\t0.028737064996626014\nRomania\t0.02807338972699749\nIndonesia\t0.02777019612956552\nIran\t0.02756135209998002\nSenegal\t0.027533812392635068\nChile\t0.026937078395424523\nAlgeria\t0.026935293018621163\nHonduras\t0.026570782268138696\nPoland\t0.02566091250486266\nParaguay\t0.025632249802488783\nNicaragua\t0.02539595849262698\nBelize\t0.025330310374482058\nCongo (Kinshasa)\t0.024891774891774892\nUkraine\t0.024607568427074143\nMoldova\t0.02391172262401756\nMauritania\t0.02378872732877768\nGuyana\t0.02270835810248484\nCroatia\t0.02248036970965431\nBurma\t0.02240709000459847\nAngola\t0.022147454651843184\nHaiti\t0.02137599093997735\nKosovo\t0.021010603482131168\nGermany\t0.020773349670014776\nCanada\t0.020711623456169552\nArgentina\t0.020659851677119218\nTrinidad and Tobago\t0.02043389417851398\nMadagascar\t0.020104767909977204\nPortugal\t0.020069251473391708\nArmenia\t0.019896205432365033\nSuriname\t0.0198415432311402\nColombia\t0.01964392171871435\nBahamas\t0.01949765857811835\nJamaica\t0.019473270765287137\nIreland\t0.01938635382744144\nLiechtenstein\t0.01928191489361702\nSierra Leone\t0.019077517507848345\nAlbania\t0.01851137969870821\nFrance\t0.018510906616900368\nKenya\t0.018423908261723906\nDiamond Princess\t0.018258426966292134\nSweden\t0.0181546849195137\nCzech Republic\t0.018122924738174583\nGuinea-Bissau\t0.01808029779314012\nLatvia\t0.017830542138762246\nHong Kong\t0.017740981667652277\nSan Marino\t0.01768520337983887\nMorocco\t0.01761141562015773\nSlovenia\t0.017247024572670647\nKyrgyzstan\t0.017242041027806028\nRussia\t0.01704189625923518\nPhilippines\t0.017032966129697794\nPanama\t0.01687474167258391\nLibya\t0.016860103346589835\nUS\t0.016690628189572555\nIndia\t0.016458333880310823\nAustria\t0.01644192006606572\nSaudi Arabia\t0.016360164538551453\nCameroon\t0.016153758441130636\nMontenegro\t0.015899001667235804\nSao Tome and Principe\t0.01577825159914712\nBangladesh\t0.015737672846024384\nNetherlands\t0.015673244645123725\nSwitzerland\t0.015591113137659212\nLithuania\t0.015500281159399122\nBotswana\t0.015454427107548678\nSaint Lucia\t0.015292949354518371\nEthiopia\t0.015276548672566372\nNamibia\t0.014965513456155436\nAzerbaijan\t0.014691825256275414\nUruguay\t0.01449134544646947\nLebanon\t0.014289099701554436\nJapan\t0.014265664473068646\nSouth Korea\t0.013987563433635908\nEquatorial Guinea\t0.013835150662445773\nCentral African Republic\t0.013832039520112915\nGeorgia\t0.013821161922538497\nMalta\t0.013724655245831833\nIraq\t0.013684559754961427\nZambia\t0.013466876339036\nDjibouti\t0.01327779224160375\nCongo (Brazzaville)\t0.01312403499742666\nRwanda\t0.013089394615499033\nNepal\t0.012943106706997554\nJordan\t0.012844054180238724\nMonaco\t0.01278465840990811\nTaiwan\t0.012682551883166795\nCosta Rica\t0.012613736938956135\nBenin\t0.012534127575080664\nDominican Republic\t0.012487694733001521\nMauritius\t0.012472487160674981\nNigeria\t0.012454520852752804\nBrunei\t0.012448132780082987\nBurkina Faso\t0.012360387192851824\nMozambique\t0.011820598382444432\nBarbados\t0.011714855433698903\nLuxembourg\t0.011656880996706287\nWest Bank and Gaza\t0.011343628791767098\nVenezuela\t0.011298678292279308\nOthers\t0.011235955056179775\nFiji\t0.011111111111111112\nOman\t0.010772555476555775\nSouth Sudan\t0.010759730538922156\nFinland\t0.010277091192923117\nPapua New Guinea\t0.010271366979457266\nNew Zealand\t0.009730538922155689\nEstonia\t0.009658177772283347\nSerbia\t0.009611738567452103\nTogo\t0.009306134603930911\nAndorra\t0.009274811947710508\nTurkey\t0.009028112799557217\nDenmark\t0.009003915056864948\nCabo Verde\t0.008687609420936148\nGhana\t0.008360437216742202\nUganda\t0.007881387298338812\nKazakhstan\t0.007845640108042807\nIsrael\t0.007632351066706534\nSri Lanka\t0.007547357871013826\nBelarus\t0.007210369076150768\nCambodia\t0.007042497831743278\nGuinea\t0.006948040738822717\nUzbekistan\t0.006890749569328152\nVietnam\t0.006803705848291835\nTajikistan\t0.006762849413886384\nCuba\t0.00673153111994689\nThailand\t0.006506763609541497\nIvory Coast\t0.0064150064573497345\nNorway\t0.006281336488708837\nGrenada\t0.006211180124223602\nGabon\t0.00615637184485943\nSaint Vincent and the Grenadines\t0.0059200789343857915\nKuwait\t0.005751229961169417\nCyprus\t0.004974918121139257\nMalaysia\t0.004744563446450888\nMongolia\t0.0047332261881634025\nIceland\t0.004424103737604882\nBahrain\t0.003983911615711631\nSeychelles\t0.003589053387169134\nEritrea\t0.003447426742181729\nUnited Arab Emirates\t0.002949249290011864\nQatar\t0.0025525131196409896\nMaldives\t0.0024957873652751723\nTimor-Leste\t0.002369668246445498\nLaos\t0.0015723270440251573\nBurundi\t0.0012725344644750796\nBhutan\t6.238303181534623E-4\nSingapore\t5.161040594809928E-4\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.245.152:4040/jobs/job?id\u003d19"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642188445012_130792111",
+      "id": "paragraph_1642188445012_130792111",
+      "dateCreated": "2022-01-14 11:27:25.012",
+      "dateStarted": "2022-01-14 11:50:16.139",
+      "dateFinished": "2022-01-14 11:50:16.288",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\nval df6 \u003d spark.read.csv(s\"/user/benjaminruiz/CFRW.csv\") //this paragraph represents the country total confirmed cases csv\ndf6.printSchema\ndf6.show()\ndf6.createOrReplaceTempView(\"CFRW_table\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:31:18.509",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n |-- _c2: string (nullable \u003d true)\n |-- _c3: string (nullable \u003d true)\n\n+-------+--------+------+----+\n|    _c0|     _c1|   _c2| _c3|\n+-------+--------+------+----+\n|   null|    null|  null|null|\n|2020-01|    9932|   213|0.02|\n|2020-02|   76194|  2728|0.04|\n|2020-03|  817641| 41092|0.05|\n|2020-04| 2379436|190547|0.08|\n|2020-05| 4065577|235857|0.06|\n|2020-06| 3867435| 98170|0.03|\n|2020-07| 6591888|118068|0.02|\n|2020-08| 7724069|170133|0.02|\n|2020-09| 8505753|158199|0.02|\n|2020-10|12135064|182193|0.02|\n|2020-11|17994069|292760|0.02|\n|2020-12|19397678|335247|0.02|\n|2021-01|19489079|411321|0.02|\n|2021-02|11132834|297354|0.03|\n|2021-03|14767996|282712|0.02|\n|2021-04|22482189|364687|0.02|\n|2021-05|18790926|353051|0.02|\n+-------+--------+------+----+\n\n\u001b[1m\u001b[34mdf6\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d3"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642189669761_1608776440",
+      "id": "paragraph_1642189669761_1608776440",
+      "dateCreated": "2022-01-14 11:47:49.762",
+      "dateStarted": "2022-01-18 11:31:18.513",
+      "dateFinished": "2022-01-18 11:31:19.379",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect _c0 as Date, Cast(IFNULL(_c3, 0) AS Double) as CFR from CFRW_table where _c0 is not null",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:33:19.091",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Date": "string",
+                      "CFR": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Date",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "CFR",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Date\tCFR\n2020-01\t0.02\n2020-02\t0.04\n2020-03\t0.05\n2020-04\t0.08\n2020-05\t0.06\n2020-06\t0.03\n2020-07\t0.02\n2020-08\t0.02\n2020-09\t0.02\n2020-10\t0.02\n2020-11\t0.02\n2020-12\t0.02\n2021-01\t0.02\n2021-02\t0.03\n2021-03\t0.02\n2021-04\t0.02\n2021-05\t0.02\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642534238524_456709747",
+      "id": "paragraph_1642534238524_456709747",
+      "dateCreated": "2022-01-18 11:30:38.524",
+      "dateStarted": "2022-01-18 11:33:19.095",
+      "dateFinished": "2022-01-18 11:33:19.329",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\nval df7 \u003d spark.read.csv(s\"/user/benjaminruiz/MNC.csv\") //this paragraph represents the country total confirmed cases csv\ndf7.printSchema\ndf7.show()\ndf7.createOrReplaceTempView(\"MNC_table\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:41:42.706",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n\n+-------+--------+\n|    _c0|     _c1|\n+-------+--------+\n|   null|    null|\n| 1-2020|    9932|\n| 2-2020|   76194|\n| 3-2020|  817641|\n| 4-2020| 2379436|\n| 5-2020| 4065577|\n| 6-2020| 3867435|\n| 7-2020| 6591888|\n| 8-2020| 7724069|\n| 9-2020| 8505753|\n|10-2020|12135064|\n|11-2020|17994069|\n|12-2020|19397678|\n| 1-2021|19489079|\n| 2-2021|11132834|\n| 3-2021|14767996|\n| 4-2021|22482189|\n| 5-2021|18790926|\n+-------+--------+\n\n\u001b[1m\u001b[34mdf7\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d6"
+            },
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d7"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642534408207_8767388",
+      "id": "paragraph_1642534408207_8767388",
+      "dateCreated": "2022-01-18 11:33:28.208",
+      "dateStarted": "2022-01-18 11:41:42.711",
+      "dateFinished": "2022-01-18 11:41:43.339",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect _c0 as Date, Cast(_c1 AS Double) as New_Cases from MNC_table where _c0 is not null",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:42:48.429",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Date": "string",
+                      "New_Cases": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Date",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "New_Cases",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Date\tNew_Cases\n1-2020\t9932.0\n2-2020\t76194.0\n3-2020\t817641.0\n4-2020\t2379436.0\n5-2020\t4065577.0\n6-2020\t3867435.0\n7-2020\t6591888.0\n8-2020\t7724069.0\n9-2020\t8505753.0\n10-2020\t1.2135064E7\n11-2020\t1.7994069E7\n12-2020\t1.9397678E7\n1-2021\t1.9489079E7\n2-2021\t1.1132834E7\n3-2021\t1.4767996E7\n4-2021\t2.2482189E7\n5-2021\t1.8790926E7\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d9"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642534410143_1301164448",
+      "id": "paragraph_1642534410143_1301164448",
+      "dateCreated": "2022-01-18 11:33:30.144",
+      "dateStarted": "2022-01-18 11:42:48.432",
+      "dateFinished": "2022-01-18 11:42:48.561",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\nval df7 \u003d spark.read.csv(s\"/user/benjaminruiz/MCC.csv\") //this paragraph represents the country total confirmed cases csv\ndf7.printSchema\ndf7.show()\ndf7.createOrReplaceTempView(\"MCC_table\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:46:13.582",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: string (nullable \u003d true)\n |-- _c1: string (nullable \u003d true)\n\n+-------+---------+\n|    _c0|      _c1|\n+-------+---------+\n|   null|     null|\n| 1-2020|     9932|\n| 2-2020|    86126|\n| 3-2020|   903767|\n| 4-2020|  3283203|\n| 5-2020|  7348780|\n| 6-2020| 11216215|\n| 7-2020| 17808103|\n| 8-2020| 25532172|\n| 9-2020| 34037925|\n|10-2020| 46172989|\n|11-2020| 64167058|\n|12-2020| 83564736|\n| 1-2021|103053815|\n| 2-2021|114186649|\n| 3-2021|128954645|\n| 4-2021|151436834|\n| 5-2021|170227760|\n+-------+---------+\n\n\u001b[1m\u001b[34mdf7\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [_c0: string, _c1: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d10"
+            },
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d11"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642534383229_128385078",
+      "id": "paragraph_1642534383229_128385078",
+      "dateCreated": "2022-01-18 11:33:03.229",
+      "dateStarted": "2022-01-18 11:46:13.584",
+      "dateFinished": "2022-01-18 11:46:14.129",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\nselect _c0 as Date, _c1 as Cumulative_Cases from MCC_table where _c0 is not null",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:47:13.123",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Date": "string",
+                      "Cumulative_Cases": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Date",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Cumulative_Cases",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Date\tCumulative_Cases\n1-2020\t9932\n2-2020\t86126\n3-2020\t903767\n4-2020\t3283203\n5-2020\t7348780\n6-2020\t11216215\n7-2020\t17808103\n8-2020\t25532172\n9-2020\t34037925\n10-2020\t46172989\n11-2020\t64167058\n12-2020\t83564736\n1-2021\t103053815\n2-2021\t114186649\n3-2021\t128954645\n4-2021\t151436834\n5-2021\t170227760\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://172.25.232.159:4040/jobs/job?id\u003d12"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642535173584_858964237",
+      "id": "paragraph_1642535173584_858964237",
+      "dateCreated": "2022-01-18 11:46:13.584",
+      "dateStarted": "2022-01-18 11:47:11.014",
+      "dateFinished": "2022-01-18 11:47:11.107",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-18 11:46:44.415",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1642535204415_1385720361",
+      "id": "paragraph_1642535204415_1385720361",
+      "dateCreated": "2022-01-18 11:46:44.415",
+      "status": "READY"
+    }
+  ],
+  "name": "cfr_bydate",
+  "id": "2GTGJYFXS",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.11.0-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
