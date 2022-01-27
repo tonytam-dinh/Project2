@@ -22,7 +22,7 @@
 - Displayed Zeppelin visualization
 
 # Getting started
-(Assumes you have both HDFS,Zeppelin,Spark Submit, and SBT Configured)
+(Assumes you have HDFS, Zeppelin, Spark Submit, and SBT Configured)
 - git clone https://github.com/tonytam-dinh/Project2.git
 - cd to  ~/ProjectTwo/target/scala-2.11
 - spark-submit --class Tony_MonthlyNewCases --master spark://localdomain --deploy-mode cluster projecttwo_2.11-0.1.0-SNAPSHOT.jar
